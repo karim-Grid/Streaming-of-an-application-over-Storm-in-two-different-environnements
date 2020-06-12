@@ -1,0 +1,80 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jan 21 14:17:47 2020
+
+@author: root
+"""
+import pandas
+df1 = pandas.read_csv('/home/user/Bureau/hafid/paraIDTime.csv',sep = ',', header = None)
+df2 = pandas.read_csv('/home/user/Bureau/hafid/paraIDTime1.csv',sep = ',', header = None)
+df3 = pandas.read_csv('/home/user/Bureau/hafid/paraIDTime2.csv',sep = ',', header = None)
+df4 = pandas.concat([df1,df2,df3])
+df4.columns = ['ID', 'TimestampSpout']
+#print(df4)
+df5 = pandas.read_csv('/home/user/Bureau/hafid/paraIDTimebolt.csv',sep = ',', header = None)
+df6 = pandas.read_csv('/home/user/Bureau/hafid/paraIDTimebolt1.csv',sep = ',', header = None)
+df7 = pandas.read_csv('/home/user/Bureau/hafid/paraIDTimebolt2.csv', sep = ',', header = None)
+df8=pandas.concat([df5, df6, df7])
+df8.columns = ['ID', 'Timestempbolt']
+df9=pandas.merge(df4, df8)
+df10=df9.assign(latences = (df9['Timestempbolt']-df9['TimestampSpout'])) 
+#print(df10)
+ca=0
+for i in range(len(df10['latences'])):
+    
+    ca= ca + df10['latences'][i]
+  
+print("The latency of the execution of the prototype generator NAMB in the Cloud only : the cluster Parapluie in Rennes")
+print(ca/len(df10['latences']))
+
+df11 = pandas.read_csv('/home/user/Bureau/hafid/spoutID.csv',sep = ',', header = None)
+df12 = pandas.read_csv('/home/user/Bureau/hafid/spoutID1.csv',sep = ',', header = None)
+df13 = pandas.read_csv('/home/user/Bureau/hafid/spoutID2.csv',sep = ',', header = None)
+df14 = pandas.concat([df11,df12,df13])
+df14.columns = ['ID', 'TimestampSpout']
+#print(df11)
+df15 = pandas.read_csv('/home/user/Bureau/hafid/boltID3.csv',sep = ',', header = None)
+df16 = pandas.read_csv('/home/user/Bureau//hafid/boltID1.csv',sep = ',', header = None)
+df17 = pandas.read_csv('/home/user/Bureau/hafid/boltID2.csv', sep = ',', header = None)
+df18=pandas.concat([df15, df16, df17])
+df18.columns = ['ID', 'Timestempbolt']
+df19=pandas.merge(df14, df18)
+df20=df19.assign(latences = (df19['Timestempbolt']-df19['TimestampSpout'])) 
+#print(df17)
+c=0
+for i in range(len(df20['latences'])):
+    
+   c = c + df20['latences'][i]
+
+print( "The latency of the execution of the protype generator NAMB in the FOG+Cloud : the multicluster Suno+Parapluie in Sophia+Rennes:"  )
+print( c/len(df20['latences']) )
+
+df21 = pandas.read_csv('/home/user/Bureau/hafid/paraIDTimespout.csv',sep = ',', header = None)
+c1= (float(df21.iat[108355,1] - df21.iat[1,1]) / float(df21.iat[108355,0] - df21.iat[1,0]))
+#print c1
+df22 = pandas.read_csv('/home/user/Bureau/hafid/paraIDTimespout1.csv',sep = ',', header = None)
+c2= (float(df22.iat[107685,1] - df22.iat[1,1]) / float(df22.iat[107685,0] - df22.iat[1,0]))
+#print c2
+df23 = pandas.read_csv('/home/user/Bureau/hafid/paraIDTimespout2.csv',sep = ',', header = None)
+c3= (float(df23.iat[107685,1] - df23.iat[1,1]) / float(df23.iat[107685,0] - df23.iat[1,0]))
+#print c3
+c4=c1+c2+c3
+print("The throughput of the execution of the prototype generator NAMB in the Cloud only : the Cluster Parapluie in Rennes ")
+print(c4)
+
+df24 = pandas.read_csv('/home/user/Bureau/hafid/spoutC.csv',sep = ',', header = None)
+#print(df1)
+c5= (float(df24.iat[165159,1] - df24.iat[1,1]) / float(df24.iat[165159,0] - df24.iat[1,0]))
+#print c1
+df25 = pandas.read_csv('/home/user/Bureau/hafid/spoutC1.csv',sep = ',', header = None)
+#print(df2)
+c6= (float(df25.iat[170593,1] - df25.iat[1,1]) / float(df25.iat[170593,0] - df25.iat[1,0]))
+#print c2
+df26 = pandas.read_csv('/home/user/Bureau/hafid/spoutC2.csv',sep = ',', header = None)
+#print(df3)
+c7= (float(df26.iat[170620,1] - df26.iat[1,1]) / float(df26.iat[170620,0] - df26.iat[1,0]))
+##print c3
+c8=c5+c6+c7
+print("The throughput of the execution of the prototype NAMB in the FOG+Cloud : the multicluster Suno+Parapluie in Sophia+Rennes")
+print(c8)
