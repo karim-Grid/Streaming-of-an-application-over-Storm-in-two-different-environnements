@@ -3,4 +3,7 @@ In this project we have explored some data streaming  and data science technique
 # Tools:
 - Grid5000 : is a large-scale and flexible testbed for experiment-driven research in all areas of computer science, with a focus on parallel and distributed computing including Cloud, HPC and Big Data and AI.it provides access to a large amount of resources: 15000 cores, 800 compute-nodes grouped in homogeneous clusters, and featuring various technologies: PMEM, GPU, SSD, NVMe, 10G and 25G Ethernet, Infiniband, Omni-Path.
 - Storm : Apache Storm is a distributed flow processing calculation framework. It uses custom-created "spouts" and "bolts" to define information sources and manipulations for batch processing and continuous data distribution.
-- NAMB : is an application prototype generator that we have executed above Storm in our experimentation's.
+- NAMB : is a prototype application generator that we have executed above Storm in our experimentation's.
+# Requirements:
+ - Pandas
+ - Grid5000 account
