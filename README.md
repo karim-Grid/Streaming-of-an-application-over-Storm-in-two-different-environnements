@@ -8,4 +8,4 @@ In this project we have explored some data streaming  and data science technique
  - Pandas
  - Grid5000 account
  # Results : 
- 1.png
+    After accomplishing our experimentation's we have found that the processing of the application in the Fog+Cloud environnement is efficient in term of throughput and latency compared to the Cloud environnement.
